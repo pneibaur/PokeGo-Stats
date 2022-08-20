@@ -1,8 +1,9 @@
 // console.log("JS LINKED")
 // window.alert("jQuery is linked")
 
-// const $name = $("#name")
-
+////////////////////////////
+//////// API CODE
+////////////////////////////
 const monMoves = {
 	"async": true,
 	"crossDomain": true,
@@ -13,11 +14,6 @@ const monMoves = {
 		"X-RapidAPI-Host": "pokemon-go1.p.rapidapi.com"
 	}
 };
-
-$.ajax(monMoves).done(function (data) {
-	// console.log(data);
-    // console.log(response[0]); // returns bulbasaur pokemon moves
-});
 
 const monCp = {
 	"async": true,
@@ -30,8 +26,23 @@ const monCp = {
 	}
 };
 
+////////////////////////////
+//////// VARIABLES
+////////////////////////////
+
+
+////////////////////////////
+//////// FUNCTIONS
+////////////////////////////
+
 $.ajax(monCp).done(function (data) {
-    console.log(data[0].pokemon_name); //returns idx "0" pokemon name : bulbasaur
-    // const found = data.find((pokeName) => pokeName === "Bulbasaur");
-    // console.log(`found the data!: ${found}`);
+    console.log(`Name of pokemon: ${data[0].pokemon_name}`); //returns idx "0" pokemon name : bulbasaur
 });
+
+$.ajax(monMoves).done(function (data) {
+    console.log(data[0].charged_moves); // returns bulbasaur pokemon moves
+});
+
+////////////////////////////
+//////// EVENT LISTENERS
+////////////////////////////
