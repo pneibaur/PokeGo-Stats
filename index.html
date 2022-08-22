@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
-    crossorigin="anonymous"
-    defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer></script>
     <script src="/js/script.js" defer></script>
     <title>Pokemon Go Stats</title>
 </head>
+
 <body>
     <header class="headCont">
         <h1 class="headTitle">Pokemon Go Stats Finder</h1>
         <form action="">
             <label>
-                <input type="text" placeholder="Type Pokemon">
+                <input id="inputText" type="text" placeholder="Type Pokemon">
             </label>
             <input type="submit" value="Get Stats!">
         </form>
     </header>
     <main class="mainCont">
         <h2 id="pokeName">Name: </h2>
+        <br>
+        <h3 class="maxCp">Max Combat Power: </h3>
+        <br>
         <ul id="ulStats">
             <h3 id="bStats">Base Stats</h3>
             <li id="liAttack">Attack: </li>
             <li id="liDefense">Defense: </li>
             <li id="liHP">Hit Points: </li>
         </ul>
+        <ul id="movesUl">
+            <h3 id="movesH3">Possible Moves</h3>
+            <li id="fastLi">Fast Moves: </li>
+            <li id="chargedLi">Charged Moves: </li>
+        </ul>
     </main>
     <aside class="sideCont">
         <div class="asideImage">
-            <img src="" alt="" srcset="">
+            <img id="pokemonImg" src="#" alt="#" srcset="">
             <p id="tempPlaceholder">Pokemon Image Here! </p>
         </div>
         <div class="divPokedex">
             <h4 id="dexEntry">PokeDex Entry: </h4>
         </div>
     </aside>
-    
+
 </body>
+
 </html>
