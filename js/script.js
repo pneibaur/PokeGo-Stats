@@ -1,18 +1,6 @@
 ////////////////////////////
-//////// MVP TO-DO's 
-////////////////////////////
-
-// write a funciton to pull data from your api for stats
-// research your API, or others, to pull a pokemon image to display. 
-// check the pokemon api that was on the project 1 markdown
-// style your webpage more with CSS and grid. 
-
-////////////////////////////
 //////// API REFERENCES
 ////////////////////////////
-
-const URL = "https://pokeapi.co/api/v2/pokemon/";
-const dexURL = "https://pokeapi.co/api/v2/pokedex/"
 
 const monMoves = {
 	"async": true,
@@ -58,6 +46,8 @@ const monTypes = {
 	}
 };
 
+const URL = "https://pokeapi.co/api/v2/pokemon/";
+const dexURL = "https://pokeapi.co/api/v2/pokedex/"
 
 ////////////////////////////
 //////// VARIABLES
@@ -91,7 +81,6 @@ const $pokemonImg = $("#pokemonImg")
 // listens for the "submit" button and executes getPokeStats fn.
 $form.on("submit", getPokeStats);
 
-
 ////////////////////////////
 //////// FUNCTIONS
 ////////////////////////////
@@ -100,41 +89,44 @@ function getPokeStats(event){
 	event.preventDefault();
 	let userInput = $input.val().toLowerCase();
 	if (userInput === '') return;
-	$.ajax(monCp).done(function(data){
-		let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
-		if (idxNum === -1) return;
+	// function passes through a name check before loading. 
+	$.ajax(monCp).done(function(nameCheck){
+		let idNum = nameCheck.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
+		if (idNum === -1) return;
+
+		// function to display pokemon name and CP
+		$.ajax(monCp).done(function (data) {
+			let idxNum = nameCheck.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
+			$pokeName.text(`Name: ${data[idxNum].pokemon_name}`);
+			$maxCp.text(`Max Combat Power: ${data[idxNum].max_cp}`);
+		});
+	
+		// function gets pokemon possible moves
+		$.ajax(monMoves).done(function (data) {
+			let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
+			$chargedLi.text(`Charged Moves: ${data[idxNum].charged_moves.join(", ")}`);
+			$fastLi.text(`Fast Moves ${data[idxNum].fast_moves.join(", ")}`);
+		});
+	
+		// funciton gets pokemon base stats. 
+		$.ajax(monStats).done(function (data) {
+			let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
+			$attackLi.text(`Attack: ${data[idxNum].base_attack}`);
+			$defenseLi.text(`Defense: ${data[idxNum].base_defense}`);
+			$hpLi.text(`Hit Points: ${data[idxNum].base_stamina}`);
+		});
+	
+		// function gets pokemon types. 
+		$.ajax(monTypes).done(function (data) {
+			let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
+			$pokeType.text(`Type: ${data[idxNum].type.join(", ")}`);
+		});
+
+		// function gets pokemon image. using Dream World Art
+		$.ajax(`${URL + userInput}`).done(function(data){
+			$pokemonImg.attr("src", data.sprites.other.dream_world.front_default);
+		})
 	})
-	// funtion gets pokemon name and max CP
-	$.ajax(monCp).done(function (data) {
-		// "data" is the entire array of the api data for maxCP pokemon. 
-		// structured as [{k:v, k:v, k:v},{},{}]
-		$pokeName.text(`Name: ${data[idxNum].pokemon_name}`);
-		$maxCp.text(`Max Combat Power: ${data[idxNum].max_cp}`);
-	});
-
-	// function gets pokemon possible moves
-	$.ajax(monMoves).done(function (data) {
-		let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
-		$chargedLi.text(`Charged Moves: ${data[idxNum].charged_moves.join(", ")}`);
-		$fastLi.text(`Fast Moves ${data[idxNum].fast_moves.join(", ")}`);
-	});
-
-	// funciton gets pokemon base stats. 
-	$.ajax(monStats).done(function (data) {
-		let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
-		$attackLi.text(`Attack: ${data[idxNum].base_attack}`);
-		$defenseLi.text(`Defense: ${data[idxNum].base_defense}`);
-		$hpLi.text(`Hit Points: ${data[idxNum].base_stamina}`);
-	});
-
-	// function gets pokemon types. 
-	$.ajax(monTypes).done(function (data) {
-		// let filterData = data.filter((e) => e.form === "Normal")
-		let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
-		$pokeType.text(`Type: ${data[idxNum].type.join(", ")}`);
-	});
-	$.ajax(`${URL + userInput}`).done(function(data){
-		$pokemonImg.attr("src", data.sprites.other.dream_world.front_default);
-	})
+	// clears input box
 	$input.val("");
 }
