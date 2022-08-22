@@ -8,8 +8,12 @@
 // style your webpage more with CSS and grid. 
 
 ////////////////////////////
-//////// API CODE
+//////// API REFERENCES
 ////////////////////////////
+
+const URL = "https://pokeapi.co/api/v2/pokemon/";
+const dexURL = "https://pokeapi.co/api/v2/pokedex/"
+
 const monMoves = {
 	"async": true,
 	"crossDomain": true,
@@ -77,7 +81,7 @@ const $fastLi = $("#fastLi")
 
 // side content elements
 const $pokedexDiv = $(".divPokedex")
-const $pokemonImg = $("pokemonImg")
+const $pokemonImg = $("#pokemonImg")
 
 
 ////////////////////////////
@@ -96,11 +100,14 @@ function getPokeStats(event){
 	event.preventDefault();
 	let userInput = $input.val().toLowerCase();
 	if (userInput === '') return;
+	$.ajax(monCp).done(function(data){
+		let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
+		if (idxNum === -1) return;
+	})
 	// funtion gets pokemon name and max CP
 	$.ajax(monCp).done(function (data) {
 		// "data" is the entire array of the api data for maxCP pokemon. 
 		// structured as [{k:v, k:v, k:v},{},{}]
-		let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
 		$pokeName.text(`Name: ${data[idxNum].pokemon_name}`);
 		$maxCp.text(`Max Combat Power: ${data[idxNum].max_cp}`);
 	});
@@ -124,8 +131,10 @@ function getPokeStats(event){
 	$.ajax(monTypes).done(function (data) {
 		// let filterData = data.filter((e) => e.form === "Normal")
 		let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
-		console.log(`data item: ${data[idxNum]}`)
 		$pokeType.text(`Type: ${data[idxNum].type.join(", ")}`);
 	});
+	$.ajax(`${URL + userInput}`).done(function(data){
+		$pokemonImg.attr("src", data.sprites.other.dream_world.front_default);
+	})
 	$input.val("");
 }
