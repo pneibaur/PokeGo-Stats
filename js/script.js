@@ -96,30 +96,30 @@ function getPokeStats(event){
 
 		// function to display pokemon name and CP
 		$.ajax(monCp).done(function (data) {
-			let idxNum = nameCheck.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
-			$pokeName.text(`Name: ${data[idxNum].pokemon_name}`);
-			$maxCp.text(`Max Combat Power: ${data[idxNum].max_cp}`);
+			let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
+			$pokeName.html(`<span class="head">Name:  </span>${data[idxNum].pokemon_name}`);
+			$maxCp.html(`<span class="head">Max Combat Power:  </span>${data[idxNum].max_cp}`);
 		});
 	
 		// function gets pokemon possible moves
 		$.ajax(monMoves).done(function (data) {
 			let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
-			$chargedLi.text(`Charged Moves: ${data[idxNum].charged_moves.join(", ")}`);
-			$fastLi.text(`Fast Moves: ${data[idxNum].fast_moves.join(", ")}`);
+			$chargedLi.html(`<span class="content">Charged Moves: </span>${data[idxNum].charged_moves.join(", ")}`);
+			$fastLi.html(`<span class="content">Fast Moves: </span>${data[idxNum].fast_moves.join(", ")}`);
 		});
 	
 		// funciton gets pokemon base stats. 
 		$.ajax(monStats).done(function (data) {
 			let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
-			$attackLi.text(`Attack: ${data[idxNum].base_attack}`);
-			$defenseLi.text(`Defense: ${data[idxNum].base_defense}`);
-			$hpLi.text(`Hit Points: ${data[idxNum].base_stamina}`);
+			$attackLi.html(`<span class="content">Attack: </span>${data[idxNum].base_attack}`);
+			$defenseLi.html(`<span class="content">Defense: </span>${data[idxNum].base_defense}`);
+			$hpLi.html(`<span class="content">Hit Points: </span>${data[idxNum].base_stamina}`);
 		});
 	
 		// function gets pokemon types. 
 		$.ajax(monTypes).done(function (data) {
 			let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
-			$pokeType.text(`Type: ${data[idxNum].type.join(", ")}`);
+			$pokeType.html(`<span class="head">Type:  </span>${data[idxNum].type.join(", ")}`);
 		});
 
 		// function gets pokemon image. using Dream World Art
