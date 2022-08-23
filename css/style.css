@@ -5,7 +5,7 @@
 
 body {
     height: auto;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -15,9 +15,6 @@ body {
         "main";
     margin: 0;
 }
-.head {
-    font-family: 'Bangers';
-}
 
 header,
 aside,
@@ -25,14 +22,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
 }
 
 header {
     grid-area: hdr;
     display: flex;
     flex-direction: column;
-    /* margin-top: 10px; -- for desktop! */
+    font-size: 20px;
 }
 
 aside {
@@ -41,7 +37,7 @@ aside {
     grid-area: side;
     display: flex;
     flex-direction: column;
-    padding: 0;
+    padding: 0 10px;
     margin: 0;
     border: 0;
 }
@@ -50,6 +46,43 @@ main {
     grid-area: main;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+}
+
+li {
+    list-style-type: none;
+}
+
+#inputText {
+    border: none;
+    font-size: 14px;
+    font-family: 'Roboto';
+    color: white;
+    background-color: rgba(121, 121, 121, 0.424);
+    padding: 5px;
+}
+
+#button {
+    background-color: rgba(54, 228, 54, 0.7);
+    border: none;
+    font-size: 14px;
+    font-family: 'Roboto';
+    color: white;
+    padding: 5px;
+    transition-duration: .3s;
+    margin-left: 10px;
+    /* box-shadow: 10cm; */
+}
+#button:hover {
+    background-color: rgb(4, 177, 4);
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.head {
+    font-family: 'Bangers';
+    color: #ffcc01;
+    text-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.25);
 }
 
 #pokemonLogo {
@@ -60,12 +93,33 @@ main {
     max-width: 300px;
 }
 
+.asideImage {
+    padding: 0 10px;
+}
+
 @media only screen and (min-width: 700px) {
     body {
-        grid-template-columns: 1fr 3fr;
+        grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr auto;
         grid-template-areas:
             "hdr hdr"
             "side main";
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+    header, aside, main {
+        padding: 0 0 50px 50px;
+    }
+    main {
+        display: flex;
+        align-items: flex-start;
+    }
+    aside {
+        display: flex;
+        align-items: flex-end;
+    }
+    #pokemonImg {
+        max-width: 500px;
     }
 }
