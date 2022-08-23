@@ -105,7 +105,7 @@ function getPokeStats(event){
 		$.ajax(monMoves).done(function (data) {
 			let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
 			$chargedLi.text(`Charged Moves: ${data[idxNum].charged_moves.join(", ")}`);
-			$fastLi.text(`Fast Moves ${data[idxNum].fast_moves.join(", ")}`);
+			$fastLi.text(`Fast Moves: ${data[idxNum].fast_moves.join(", ")}`);
 		});
 	
 		// funciton gets pokemon base stats. 
@@ -125,6 +125,7 @@ function getPokeStats(event){
 		// function gets pokemon image. using Dream World Art
 		$.ajax(`${URL + userInput}`).done(function(data){
 			$pokemonImg.attr("src", data.sprites.other.dream_world.front_default);
+			$pokemonImg.attr("alt", userInput)
 		})
 	})
 	// clears input box
