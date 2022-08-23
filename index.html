@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&family=Roboto:wght@500&display=swap"
+        rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer></script>
     <script src="/js/script.js" defer></script>
@@ -14,7 +16,8 @@
 
 <body>
     <header class="headCont">
-        <h1 class="headTitle">Pokemon Go Stats Finder</h1>
+        <img id="pokemonLogo" src="/img/Pokémon_GO_logo.svg.png" alt="pokemon go logo" />
+        <h1 class="headTitle"><span class="head">Stats Finder</span></h1>
         <form action="">
             <label>
                 <input id="inputText" type="text" placeholder="Type Pokemon">
@@ -23,27 +26,24 @@
         </form>
     </header>
     <main class="mainCont">
-        <h2 id="pokeName">Name: </h2>
-        <h3 class="topStats" id="pokeType">Type: </h3>
-        <h3 class="topStats" id="maxCp">Max Combat Power: </h3>
+        <h2 id="pokeName"><span class="head">Name:</span> </h2>
+        <h3 class="topStats" id="pokeType"><span class="head">Type: </span></h3>
+        <h3 class="topStats" id="maxCp"><span class="head">Max Combat Power: </span></h3>
         <ul id="ulStats">
-            <h3 id="bStats">Base Stats</h3>
-            <li id="liAttack">Attack: </li>
-            <li id="liDefense">Defense: </li>
-            <li id="liHP">Hit Points: </li>
+            <h3 id="bStats"><span class="head">Base Stats: </span></h3>
+            <li id="liAttack"><span class="content">Attack: </span></li>
+            <li id="liDefense"><span class="content">Defense: </span></li>
+            <li id="liHP"><span class="content">Hit Points: </span></li>
         </ul>
         <ul id="movesUl">
-            <h3 id="movesH3">Possible Moves</h3>
-            <li id="fastLi">Fast Moves: </li>
-            <li id="chargedLi">Charged Moves: </li>
+            <h3 id="movesH3"><span class="head">Possible Moveset: </span></h3>
+            <li id="fastLi"><span class="content">Fast Moves: </span></li>
+            <li id="chargedLi"><span class="content">Charged Moves: </span></li>
         </ul>
     </main>
     <aside class="sideCont">
         <div class="asideImage">
             <img id="pokemonImg" src="" alt="" srcset="">
-        </div>
-        <div class="divPokedex">
-            <h4 id="dexEntry">PokeDex Entry: </h4>
         </div>
     </aside>
 
