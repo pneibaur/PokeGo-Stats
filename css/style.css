@@ -13,7 +13,7 @@ body {
         "hdr"
         "side"
         "main";
-    margin: 0;
+        margin-bottom: 150px;
 }
 
 header,
@@ -22,24 +22,29 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* NEW */
+    /* margin: 0 10px 0 10px; */
 }
 
 header {
     grid-area: hdr;
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     font-size: 20px;
+    /* NEW */
+    max-height: 400px;
+    margin-bottom: 100px;
 }
 
 aside {
-    /* lots of space above and below the image
-     (when viewing mobile). padding/margin doesn't seem to fix it */
     grid-area: side;
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
-    margin: 0;
+    padding: 0 10px 0 10px;
     border: 0;
+    margin: 0;
+/* NEW */
+    max-height: 300px;
 }
 
 main {
@@ -47,7 +52,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 50px;
+    padding: 0 50px 0 50px;
+/* NEW */
+    max-height: 400px;
 }
 
 li {
@@ -72,8 +79,8 @@ li {
     padding: 5px;
     transition-duration: .3s;
     margin-left: 10px;
-    /* box-shadow: 10cm; */
 }
+
 #button:hover {
     background-color: rgb(4, 177, 4);
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
@@ -95,6 +102,10 @@ li {
 
 .asideImage {
     padding: 0 10px;
+}
+/* NEW */
+.search {
+    /* margin-bottom: 50px; */
 }
 
 @media only screen and (min-width: 700px) {
