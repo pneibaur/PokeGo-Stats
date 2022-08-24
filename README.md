@@ -33,7 +33,7 @@ This project employs the following
 
 ## Website Navigation
 
-Please [click this link](#) to navigate to the website! 
+Please visit [pokegostats.netlify.app](https://pokegostats.netlify.app/) to navigate to the website! 
 
 ---
 
