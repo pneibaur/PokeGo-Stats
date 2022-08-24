@@ -5,7 +5,7 @@
 
 ## Description: 
 
-This web application serves as a search feature to lookup pokemon available in 'Pokemon Go', and some key stats: 
+This web application serves as a search feature to lookup pokemon available in *Pokemon Go*, and some key stats: 
 
 - Types
 - Maximum Combat Power
@@ -47,4 +47,6 @@ Please [click this link](#) to navigate to the website!
 
 ## Original Wireframe
 
-Here is the original wireframe for the project: ![wireframe](/img/poke-stats_wireframe.jpeg)
+Here is the original wireframe for the project: 
+
+![wireframe](/img/poke-stats_wireframe.jpeg)
