@@ -92,8 +92,9 @@ function getPokeStats(event){
 	// function passes through a name check before loading. 
 	$.ajax(monCp).done(function(nameCheck){
 		let idNum = nameCheck.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
-		if (idNum === -1) return;
-
+		if (idNum === -1) {
+			$("#inputText").attr("placeholder", "Invalid. Try 'pikachu'!")
+		};
 		// function to display pokemon name and CP
 		$.ajax(monCp).done(function (data) {
 			let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
@@ -130,4 +131,5 @@ function getPokeStats(event){
 	})
 	// clears input box
 	$input.val("");
+	$("#inputText").attr("placeholder", "Type a Pokemon!");
 }
