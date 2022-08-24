@@ -31,7 +31,7 @@ This project employs the following
 
 ---
 
-## Installation
+## Website Navigation
 
 Please [click this link](#) to navigate to the website! 
 
@@ -42,3 +42,9 @@ Please [click this link](#) to navigate to the website!
 - Pokemon Randomizer: Randomly selects a Pokemon
 - Dropdown menu to select an available Pokemon
 - Adding a type effectiveness section
+
+---
+
+## Original Wireframe
+
+Here is the original wireframe for the project: ![wireframe](/img/poke-stats_wireframe.jpeg)
