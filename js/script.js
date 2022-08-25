@@ -73,6 +73,10 @@ const $fastLi = $("#fastLi")
 const $pokedexDiv = $(".divPokedex")
 const $pokemonImg = $("#pokemonImg")
 
+// Buttons
+const $randSelect = $("#btnRandomizer")
+const $submit = $("#getStats")
+
 
 ////////////////////////////
 //////// EVENT LISTENERS
@@ -80,11 +84,23 @@ const $pokemonImg = $("#pokemonImg")
 
 // listens for the "submit" button and executes getPokeStats fn.
 $form.on("submit", getPokeStats);
+$randSelect.on("click", randomSelect);
 
 ////////////////////////////
 //////// FUNCTIONS
 ////////////////////////////
 
+// randomly selects a pokemon name, places in the "submit" field, and clicks "submit".
+function randomSelect(){
+	$.ajax(monCp).then(function(data){
+		let randIdx = Math.floor(Math.random() * data.length);
+		let randName = data[randIdx].pokemon_name.toLowerCase();
+		$input.val(randName)
+		$submit.click();
+	})
+}
+
+// gets pokemon stats and image. 
 function getPokeStats(event){
 	event.preventDefault();
 	let userInput = $input.val().trim().toLowerCase();
