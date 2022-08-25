@@ -32,9 +32,8 @@ main {
 header {
     grid-area: hdr;
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
     font-size: 20px;
-    /* NEW */
     max-height: 400px;
     margin-bottom: 100px;
 }
@@ -46,7 +45,6 @@ aside {
     padding: 0 10px 0 10px;
     border: 0;
     margin: 0;
-    /* NEW */
     max-height: 300px;
 }
 
@@ -67,6 +65,14 @@ li {
     list-style-type: none;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin: 50px; */
+}
+
 #inputText {
     border: none;
     font-size: 14px;
@@ -74,6 +80,7 @@ li {
     color: white;
     background-color: rgba(121, 121, 121, 0.424);
     padding: 5px;
+    margin-bottom: 10px;
 }
 
 #getStats {
@@ -85,6 +92,7 @@ li {
     padding: 5px;
     transition-duration: .3s;
     margin-left: 10px;
+    margin-bottom: 10px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -101,6 +109,7 @@ li {
     font-size: 14px;
     font-family: 'Roboto';
     padding: 5px;
+    margin-bottom: 10px;
     transition-duration: .3s;
     margin-left: 10px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
@@ -157,6 +166,11 @@ li {
     aside {
         display: flex;
         align-items: flex-end;
+    }
+
+    form {
+        display: flex;
+        flex-direction: row;
     }
 
     #pokemonImg {
