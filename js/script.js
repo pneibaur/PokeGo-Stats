@@ -87,14 +87,14 @@ $form.on("submit", getPokeStats);
 
 function getPokeStats(event){
 	event.preventDefault();
-	let userInput = $input.val().toLowerCase();
+	let userInput = $input.val().trim().toLowerCase();
 	if (userInput === '') return;
 	// function passes through a name check before loading. 
 	$.ajax(monCp).done(function(nameCheck){
 		let idNum = nameCheck.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
 		if (idNum === -1) {
 			$("#inputText").attr("placeholder", "Invalid. Try 'pikachu'!")
-		};
+		} else {
 		// function to display pokemon name and CP
 		$.ajax(monCp).done(function (data) {
 			let idxNum = data.findIndex((e) => (e.pokemon_name.toLowerCase() === userInput && e.form === "Normal"));
@@ -128,6 +128,7 @@ function getPokeStats(event){
 			$pokemonImg.attr("src", data.sprites.other.dream_world.front_default);
 			$pokemonImg.attr("alt", userInput)
 		})
+		}
 	})
 	// clears input box
 	$input.val("");
