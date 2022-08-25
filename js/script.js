@@ -94,8 +94,9 @@ $randSelect.on("click", randomSelect);
 function randomSelect(){
 	$.ajax(monCp).then(function(data){
 		let randIdx = Math.floor(Math.random() * data.length);
-		let randName = data[randIdx].pokemon_name.toLowerCase();
+		let randName = data[randIdx].pokemon_name.trim().toLowerCase();
 		$input.val(randName)
+		console.log(`Pokemon selected: ${randName}`)
 		$submit.click();
 	})
 }
