@@ -93,12 +93,12 @@ $randSelect.on("click", randomSelect);
 // randomly selects a pokemon name, places in the "submit" field, and clicks "submit".
 function randomSelect(){
 	$.ajax(monCp).then(function(data){
-		let randIdx = Math.floor(Math.random() * data.length);
-		let randName = data[randIdx].pokemon_name.trim().toLowerCase();
-		$input.val(randName)
-		console.log(`Pokemon selected: ${randName}`)
+		const filterData = data.filter((e) => (e.form === "Normal"));
+		let randIdx = Math.floor(Math.random() * filterData.length);
+		let randName = filterData[randIdx].pokemon_name.trim().toLowerCase();
+		$input.val(randName);
 		$submit.click();
-	})
+	});
 }
 
 // gets pokemon stats and image. 
